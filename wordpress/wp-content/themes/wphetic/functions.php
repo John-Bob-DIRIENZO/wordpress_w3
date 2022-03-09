@@ -53,3 +53,33 @@ function wpheticPaginateLinks()
 require_once __DIR__ . '/classes/Sponsobox.php';
 $sponso = new Sponsobox('wphetic_sponso');
 
+
+add_action('init', function () {
+    register_taxonomy('style', ['event'], [
+        'labels' => [
+            'name' => 'Styles'
+        ],
+        'public' => true,
+        'hierarchical' => true,
+        'show_in_rest' => true,
+        'default_term' => [
+            'name' => 'metôl',
+            'slug' => 'metol'
+        ]
+    ]);
+
+    register_post_type('event',  [
+        'label' => 'Events',
+        'public' => true,
+        'hierarchical' => true,
+        'show_in_rest' => true,
+        'menu_icon' => 'dashicons-plugins-checked',
+        'taxonomies' => ['style'],
+        'supports' => ['thumbnail', 'custom-fields', 'title']
+    ]);
+
+
+
+    flush_rewrite_rules();
+});
+
