@@ -17,4 +17,25 @@
     <?php endwhile; ?>
 <?php endif; ?>
 
+
+<form action="<?= admin_url('admin-post.php'); ?>" method="post" enctype="multipart/form-data">
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">titre</label>
+        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="title">
+        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">prix</label>
+        <input type="text" class="form-control" id="exampleInputPassword1" name="prix">
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">image</label>
+        <input type="file" class="form-control" id="exampleInputPassword1" name="image">
+    </div>
+    <input type="hidden" name="action" value="wphetic">
+    <?php wp_nonce_field('form', 'form'); ?>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+
 <?php get_footer(); ?>

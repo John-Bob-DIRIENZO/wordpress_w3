@@ -80,3 +80,5 @@ function wphetic_query($atts)
 //    return ob_get_clean();
 
 }
+
+
